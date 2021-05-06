@@ -1,23 +1,25 @@
-import logo from '../components/logo.svg';
 import './Index.css';
 
 function Index() {
+  const audioCtx = new AudioContext()
+  console.log(audioCtx.destination)
+  
+  const onChange = (e: any) => {
+    const target = e.target as HTMLInputElement
+    const file = target!.files![0]
+    file.arrayBuffer()
+        .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
+        .then(audioBuffer => {
+          const bufferSrc = audioCtx.createBufferSource()
+          bufferSrc.buffer = audioBuffer
+          bufferSrc.connect(audioCtx.destination)
+          bufferSrc.start()
+        })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="file" onChange={onChange} />
     </div>
   );
 }
