@@ -1,0 +1,45 @@
+html
+  font-size: 14px
+  height: 100%
+
+body
+  height: 100%
+  margin: 0
+  padding: 0
+
+.flex
+  display: flex
+.flexbox
+  display: flex
+  align-items: center
+.flex,
+.flexbox
+  // > :not(:last-child)
+  //   margin-right: .5em
+  &.has-center
+    justify-content: center
+  &.has-space-evenly
+    justify-content: space-evenly
+    > *
+      flex: 1
+  &.has-space-between
+    justify-content: space-between
+    > :not(:last-child)
+      margin-right: 0
+  &.has-space-around
+    justify-content: space-around
+    > :not(:last-child)
+      margin-right: 0
+  &.align-center
+    align-items: center
+  &.align-end
+    align-items: flex-end
+  // &.has-baseline
+  //   align-items: baseline
+  // &.has-flex-end
+  //   align-items: flex-end
+  .right
+    margin-left: auto
+  .center
+    margin-left: auto
+    margin-right: auto
