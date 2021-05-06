@@ -1,4 +1,5 @@
-import './Index.css';
+import './Index.sass'
+import Footer from '../components/Footer/Index'
 
 function Index() {
   const audioCtx = new AudioContext()
@@ -18,10 +19,11 @@ function Index() {
   }
 
   return (
-    <div>
+    <div className="Index">
       <input type="file" onChange={onChange} />
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default Index;
+export default Index
